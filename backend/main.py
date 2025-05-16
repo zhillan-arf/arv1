@@ -1,19 +1,12 @@
 from fastapi import FastAPI, Header
-from pydantic import BaseModel
 from contextlib import asynccontextmanager
 from fetchers.oai import OAIComplete
+from classes import OAIMsg, UserInput
 import os, aioredis, json
 
 # Initial Setup
 
 TTL_SECONDS = 60 * 60 * 2 
-
-class OAIMsg(BaseModel):
-    messages: list
-
-class UserInput(BaseModel):
-    session_id: str
-    messages: list
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
