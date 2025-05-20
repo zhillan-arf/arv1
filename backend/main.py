@@ -1,7 +1,6 @@
 from fastapi import FastAPI, Header
 from contextlib import asynccontextmanager
 from fetchers.oai import OAIComplete
-from classes import OAIMsg, UserInput
 import os, aioredis, json
 
 # Initial Setup

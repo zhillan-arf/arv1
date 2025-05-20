@@ -1,0 +1,15 @@
+[
+    {
+        "role": "developer",
+        "content": "Answer the question in all lower case"
+    },
+    {
+        "role": "assistant",
+        "content": "hi! can i help you?"
+    },
+    {
+        "role": "user",
+        "content": "What is the biggest country in the world?"
+    }
+
+]

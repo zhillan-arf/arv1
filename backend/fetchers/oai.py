@@ -1,21 +1,19 @@
 from openai import OpenAI
 from dotenv import load_dotenv
 from os import getenv
-from classes import OAIMsg
-
+load_dotenv()
+client = OpenAI(api_key=getenv("OAI_KEY"))
 MAX_TOKENS = 1000
 
-load_dotenv()
+def oai_infer(msgs, store=False):   
+    # msgs: str | list of {role: str, content: str | list}
+    # No instructions. Put instructions as the first msg
 
-client = OpenAI(
-    api_key=getenv("OAI_KEY")
-)
-
-def OAIComplete(messages):
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=messages,
-        max_tokens = MAX_TOKENS
+    response = client.responses.create(
+        model = "gpt-4o-mini",
+        input = msgs,
+        store = store,
+        max_output_tokens = MAX_TOKENS,
     )
 
-    return response.choices[0].message.content
+    return response
